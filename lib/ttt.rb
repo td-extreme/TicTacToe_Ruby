@@ -23,4 +23,19 @@ class TicTacToe
     @board[space]
   end
 
+  def game_state
+     
+     if get_space(0) == get_space(1) && \
+        get_space(0) == get_space(2) && \
+        get_space(0) != nil
+       return @board[0]
+     end     
+	    
+     'Playing'
+     
+      
+    
+  end
+
+
 end

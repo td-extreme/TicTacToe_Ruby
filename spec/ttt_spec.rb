@@ -37,12 +37,26 @@ describe TicTacToe do
 
   end
 
-  describe "" do
-    
+  describe "Checking Game Status ie Playing, Winner, Tied" do
+   
+ 
     before do
       @myTTT = TicTacToe.new
     end
-    
+
+    it  "Reutnrs 'Playing' when game is still going on" do
+      expect(@myTTT.game_state).to eq('Playing')
+    end
+
+    it "Returns 'X' as winner when 'X' has 3 in a row" do
+      @myTTT.play_move(0, 'X')
+      @myTTT.play_move(1, 'X')
+      @myTTT.play_move(2, 'X')
+      expect(@myTTT.game_state).to eq('X')
+    end
+   
+
+ 
   end
 
 end
