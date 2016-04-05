@@ -36,79 +36,78 @@ describe TicTacToe do
   end
 
   describe "Checking Game Status ie Playing, Winner, Tied" do
-  
-    let(:myTTT){ TicTacToe.new }   
-
-
+ 
     it  "Reutnrs 'Playing' when game is still going on" do
-      expect(myTTT.game_state).to eq('Playing')
+      expect(subject.game_state).to eq('Playing')
     end
 
     it "Returns 'X' as winner when 'X' has 3 in a row" do
-      myTTT.play_move(0, 'X')
-      myTTT.play_move(1, 'X')
-      myTTT.play_move(2, 'X')
-      expect(myTTT.game_state).to eq('X')
+      subject.play_move(0, 'X')
+      subject.play_move(1, 'X')
+      subject.play_move(2, 'X')
+      expect(subject.game_state).to eq('X')
     end
    
     it "Returns 'X' as winner when 'X' has 3 in a row second row" do
-      myTTT.play_move(3, 'X')
-      myTTT.play_move(4, 'X')
-      myTTT.play_move(5, 'X')
-      expect(myTTT.game_state).to eq('X')
+      subject.play_move(3, 'X')
+      subject.play_move(4, 'X')
+      subject.play_move(5, 'X')
+      expect(subject.game_state).to eq('X')
     end
  
     it "Returns 'X' as winner when 'X' has 3 in a row third row" do
-      myTTT.play_move(6, 'X')
-      myTTT.play_move(7, 'X')
-      myTTT.play_move(8, 'X')
-      expect(myTTT.game_state).to eq('X')
+      subject.play_move(6, 'X')
+      subject.play_move(7, 'X')
+      subject.play_move(8, 'X')
+      expect(subject.game_state).to eq('X')
     end
  
     it "Returns 'X' as winner when 'X' has 3 in a col first col" do
-      myTTT.play_move(0, 'X')
-      myTTT.play_move(3, 'X')
-      myTTT.play_move(6, 'X')
-      expect(myTTT.game_state).to eq('X')
+      subject.play_move(0, 'X')
+      subject.play_move(3, 'X')
+      subject.play_move(6, 'X')
+      expect(subject.game_state).to eq('X')
     end
 
     it "Returns 'X' as winner when 'X' has 3 in a col second col" do
-      myTTT.play_move(1, 'X')
-      myTTT.play_move(4, 'X')
-      myTTT.play_move(7, 'X')
-      expect(myTTT.game_state).to eq('X')
+      subject.play_move(1, 'X')
+      subject.play_move(4, 'X')
+      subject.play_move(7, 'X')
+      expect(subject.game_state).to eq('X')
     end
 
     it "Returns 'X' as winner when 'X' has 3 in a col third col" do
-      myTTT.play_move(2, 'X')
-      myTTT.play_move(5, 'X')
-      myTTT.play_move(8, 'X')
-      expect(myTTT.game_state).to eq('X')
+      subject.play_move(2, 'X')
+      subject.play_move(5, 'X')
+      subject.play_move(8, 'X')
+      expect(subject.game_state).to eq('X')
     end
 
     it "Returns 'X' as winner when 'X' has 3 in a diagnal descending" do
-      myTTT.play_move(0, 'X')
-      myTTT.play_move(4, 'X')
-      myTTT.play_move(8, 'X')
-      expect(myTTT.game_state).to eq('X')
+      subject.play_move(0, 'X')
+      subject.play_move(4, 'X')
+      subject.play_move(8, 'X')
+      expect(subject.game_state).to eq('X')
     end
 
     it "Returns 'X' as winner when 'X' has 3 in a diagnal ascending" do
-      myTTT.play_move(6, 'X')
-      myTTT.play_move(4, 'X')
-      myTTT.play_move(2, 'X')
-      expect(myTTT.game_state).to eq('X')
+      subject.play_move(6, 'X')
+      subject.play_move(4, 'X')
+      subject.play_move(2, 'X')
+      expect(subject.game_state).to eq('X')
     end
 
     it "Returns 'Tied' if game no moves left and there is no winner" do
       for i in 0..8 
-        myTTT.play_move(i, i)
+        subject.play_move(i, i)
       end
-      expect(myTTT.game_state).to eq('Tied')
+      expect(subject.game_state).to eq('Tied')
     end
  
   end
 
+
+  
  
 
 
