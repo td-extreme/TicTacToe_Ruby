@@ -33,14 +33,23 @@ describe TicTacToe do
       expect(subject.valid_move?(2)).to be true
     end
 
-    it "The player should be told move is invalid when user enters a space that is taken" do
-       subject.play_move(0, 'X')
+
+# attempt at testing STDOUT and passing STDIN
+# Right now it still makes me press the return key, even though there is a \n in my STDIN string. 
+# todo:: look this issue up online and figure out how to fix it
+
+    it "Asks the player to enter a move" do
        expect(STDOUT).to receive(:puts).with("Please enter a space to play (0-8) : ")
        allow(STDIN).to receive(:gets) { '0\n' }
-       expect(subject.get_human_move).to eq "That space has already been played."				 
-       
+       expect(subject.get_human_move).to eq(0)			 
+
     end
-    
+
+    it "Returns false if move use picks is not valid" do
+       subject.play_move(0, 'X')
+       allow(STDIN).to receive(:gets) { '0\n' }
+       expect(subject.get_human_move).to be false
+    end
 
   end
 

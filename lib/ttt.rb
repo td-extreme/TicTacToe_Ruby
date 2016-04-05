@@ -25,9 +25,19 @@ class TicTacToe
     @board[space]
   end
 
+  def get_human_move
+    puts "Please enter a space to play (0-8) : "
+    space = gets.chomp.to_i
+    if !(valid_move?(space))
+      puts "That space has already been played."
+      return false
+    end
+
+    space
+  end
+
+
   def game_state
-
-
 
     # rows
     i = 0
