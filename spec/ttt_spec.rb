@@ -39,16 +39,26 @@ describe TicTacToe do
 # todo:: look this issue up online and figure out how to fix it
 
     it "Asks the player to enter a move" do
-       expect(STDOUT).to receive(:puts).with("Please enter a space to play (0-8) : ")
-       allow(STDIN).to receive(:gets) { '0\n' }
-       expect(subject.get_human_move).to eq(0)			 
+      expect(STDOUT).to receive(:puts).with("Please enter a space to play (0-8) : ")
+      allow(STDIN).to receive(:gets) { '0\n' }
+      expect(subject.get_human_move).to eq(0)			 
 
     end
 
     it "Returns false if move use picks is not valid" do
-       subject.play_move(0, 'X')
-       allow(STDIN).to receive(:gets) { '0\n' }
-       expect(subject.get_human_move).to be false
+      subject.play_move(0, 'X')
+      allow(STDIN).to receive(:gets) { '0\n' }
+      expect(subject.get_human_move).to be false
+    end
+
+  end
+
+  describe "Displaying the game board" do
+    
+    it "outputs a blank board when no moves have been played" do
+      expect(STDOUT).to receive(:puts).with( "   |   |   \n---+---+---\n   |   |   \n---+---+---\n   |   |   \n")
+      expect(subject.print_board).to eq(nil)
+                                              
     end
 
   end

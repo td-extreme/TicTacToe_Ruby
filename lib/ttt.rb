@@ -5,15 +5,15 @@
 class TicTacToe 
 
   def initialize
-    @board = Array.new(9)
+    @board = Array.new(9, ' ')
   end 
 
   def clear_board
-    @board = Array.new(9)
+    @board = Array.new(9, ' ')
   end
 
   def valid_move?(move)     
-    return true if @board[move] == nil    
+    return true if @board[move] == ' '
     false    
   end
 
@@ -36,6 +36,20 @@ class TicTacToe
     space
   end
 
+  def print_board
+    rtn_string = ""
+    i = 0
+    begin
+
+       rtn_string << " #{@board[i]} | #{@board[i+1]} | #{@board[i+2]} \n"
+       rtn_string << "---+---+---\n" if i < 6
+       i = i + 3
+    end while i <=6
+    
+    puts rtn_string
+
+  end
+
 
   def game_state
 
@@ -44,7 +58,7 @@ class TicTacToe
     begin 
       if get_space(i) == get_space(i + 1) && \
          get_space(i) == get_space(i + 2) && \
-         get_space(i) != nil
+         get_space(i) != ' '
         return @board[i]
       end
       i = i + 3
@@ -54,7 +68,7 @@ class TicTacToe
     for i in 0..2
       if get_space(i) == get_space(i + 3) && \
          get_space(i) == get_space(i + 6) && \
-         get_space(i) != nil
+         get_space(i) != ' '
         return @board[i]
       end
     end
@@ -63,18 +77,18 @@ class TicTacToe
 
      if get_space(4) == get_space(0) && \
         get_space(4) == get_space(8) && \
-        get_space(4) != nil
+        get_space(4) != ' '
        return @board[4]
      end
 
      if get_space(4) == get_space(2) && \
         get_space(4) == get_space(6) && \
-        get_space(4) != nil
+        get_space(4) != ' '
        return @board[4]
      end
 
      @board.each do |space|
-       return 'Playing' if space == nil
+       return 'Playing' if space == ' '
      end
 	    
      'Tied'    
