@@ -30,6 +30,12 @@ class TicTacToe
         get_space(0) != nil
        return @board[0]
      end     
+	
+     if get_space(0) == get_space(1) && \
+        get_space(0) == get_space(2) && \
+        get_space(0) != nil
+       return @board[0]
+     end     
 	    
      'Playing'
      

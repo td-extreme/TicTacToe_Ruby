@@ -55,6 +55,13 @@ describe TicTacToe do
       expect(@myTTT.game_state).to eq('X')
     end
    
+    it "Returns 'X' as winner when 'X' has 3 in a row second row" do
+      @myTTT.play_move(3, 'X')
+      @myTTT.play_move(4, 'X')
+      @myTTT.play_move(5, 'X')
+      expect(@myTTT.game_state).to eq('X')
+    end
+ 
 
  
   end
