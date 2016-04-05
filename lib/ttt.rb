@@ -1,5 +1,7 @@
 # lib/ttt.rb
 
+
+
 class TicTacToe 
 
   def initialize
@@ -25,9 +27,9 @@ class TicTacToe
 
   def game_state
 
-# todo:: refactor this code! / clean this copy & paste up. 
 
- # rows
+
+    # rows
     i = 0
     begin 
       if get_space(i) == get_space(i + 1) && \
@@ -38,7 +40,7 @@ class TicTacToe
       i = i + 3
     end while i <= 6     
     
-  #cols      
+    #cols      
     for i in 0..2
       if get_space(i) == get_space(i + 3) && \
          get_space(i) == get_space(i + 6) && \
@@ -47,7 +49,7 @@ class TicTacToe
       end
     end
 
-  #diagnols
+    #diagnols
 
      if get_space(4) == get_space(0) && \
         get_space(4) == get_space(8) && \
