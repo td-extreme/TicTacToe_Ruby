@@ -39,7 +39,6 @@ describe TicTacToe do
 
   describe "Checking Game Status ie Playing, Winner, Tied" do
    
- 
     before do
       @myTTT = TicTacToe.new
     end

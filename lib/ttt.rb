@@ -25,49 +25,28 @@ class TicTacToe
 
   def game_state
 
-# todo:: refactor this code!
+# todo:: refactor this code! / clean this copy & paste up. 
 
  # rows
-     
-     if get_space(0) == get_space(1) && \
-        get_space(0) == get_space(2) && \
-        get_space(0) != nil
-       return @board[0]
-     end     
-	
-     if get_space(3) == get_space(4) && \
-        get_space(3) == get_space(5) && \
-        get_space(3) != nil
-       return @board[3]
-     end     
+    i = 0
+    begin 
+      if get_space(i) == get_space(i + 1) && \
+         get_space(i) == get_space(i + 2) && \
+         get_space(i) != nil
+        return @board[i]
+      end
+      i = i + 3
+    end while i <= 6     
+    
+  #cols      
+    for i in 0..2
+      if get_space(i) == get_space(i + 3) && \
+         get_space(i) == get_space(i + 6) && \
+         get_space(i) != nil
+        return @board[i]
+      end
+    end
 
-     if get_space(6) == get_space(7) && \
-        get_space(6) == get_space(8) && \
-        get_space(6) != nil
-       return @board[6]
-     end     
-
-  #cols
-
-     if get_space(0) == get_space(3) && \
-        get_space(0) == get_space(6) && \
-        get_space(0) != nil
-       return @board[0]
-     end
-
-     if get_space(2) == get_space(5) && \
-        get_space(2) == get_space(8) && \
-        get_space(2) != nil
-       return @board[2]
-     end
-
-
-     if get_space(1) == get_space(4) && \
-        get_space(1) == get_space(7) && \
-        get_space(1) != nil
-       return @board[1]
-     end
-      
   #diagnols
 
      if get_space(4) == get_space(0) && \
@@ -76,23 +55,16 @@ class TicTacToe
        return @board[4]
      end
 
-
      if get_space(4) == get_space(2) && \
         get_space(4) == get_space(6) && \
         get_space(4) != nil
        return @board[4]
      end
 
-
      @board.each do |space|
        return 'Playing' if space == nil
      end
 	    
-     'Tied'
-     
-      
-    
+     'Tied'    
   end
-
-
 end
