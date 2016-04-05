@@ -33,6 +33,15 @@ describe TicTacToe do
       expect(subject.valid_move?(2)).to be true
     end
 
+    it "The player should be told move is invalid when user enters a space that is taken" do
+       subject.play_move(0, 'X')
+       expect(STDOUT).to receive(:puts).with("Please enter a space to play (0-8) : "
+       allow(STDIN).to recieve(:gets) { '0\n' }
+       expect(subject.get_human_move).to eq 'That space has already been played."				 
+
+    end
+    
+
   end
 
   describe "Checking Game Status ie Playing, Winner, Tied" do
@@ -105,10 +114,6 @@ describe TicTacToe do
     end
  
   end
-
-
-  
- 
 
 
 end
