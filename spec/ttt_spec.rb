@@ -51,6 +51,18 @@ describe TicTacToe do
       expect(subject.get_human_move).to be false
     end
 
+
+    it "get_current_player returns 'O' after swtich turns" do
+      subject.switch_players
+      expect(subject.get_current_player).to eq('O')
+    end
+
+    it "get_current_player returns 'X' after swtich turns" do
+      subject.switch_players
+      subject.switch_players
+      expect(subject.get_current_player).to eq('X')
+    end
+
   end
 
   describe "Displaying the game board" do

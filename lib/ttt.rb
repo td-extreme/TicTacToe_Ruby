@@ -6,6 +6,9 @@ class TicTacToe
 
   def initialize
     @board = Array.new(9, ' ')
+    @player1 = 'X'
+    @player2 = 'O'
+    @current_player = @player1
   end 
 
   def clear_board
@@ -34,6 +37,18 @@ class TicTacToe
     end
 
     space
+  end
+
+  def switch_players
+    if @current_player == @player1
+       @current_player = @player2
+    else 
+       @current_player = @player1
+    end
+  end
+
+  def get_current_player
+    @current_player
   end
 
   def print_board
@@ -93,4 +108,22 @@ class TicTacToe
 	    
      'Tied'    
   end
+
+  def game_loop 
+    puts "game loop"
+    begin
+      
+
+    end while game_state == 'Playing'
+
+  end
+
 end
+
+
+
+
+myTTT = TicTacToe.new
+
+
+# myTTT.game_loop
