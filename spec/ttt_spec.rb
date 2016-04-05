@@ -10,8 +10,16 @@ describe TicTacToe do
     end
 
     it "valid_move? return true if space is free" do
-      expect(@myTTT.valid_move?).to be true
+      expect(@myTTT.valid_move?(1)).to be true
     end
+ 
+    it "valid_move? return false if space is taken" do
+      @myTTT.play_move(1, 'X')
+      expect(@myTTT.valid_move?(1)).to be false
+    end
+
+
+
 
   end
   
