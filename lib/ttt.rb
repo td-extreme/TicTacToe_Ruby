@@ -16,12 +16,17 @@ class TicTacToe
   end
 
   def valid_move?(move)     
+    return false if move.class != Fixnum
     return true if @board[move] == ' '
     false    
   end
 
   def play_move(move, player)
-    @board[move] = player if valid_move?(move)
+    if valid_move?(move)
+      @board[move] = player 
+      return true
+    end
+    false
   end
 
   def get_space(space)
@@ -112,7 +117,17 @@ class TicTacToe
   def game_loop 
     puts "game loop"
     begin
+      print_board
+      puts "It is #{@current_player} turn. "
       
+      move =  get_human_move
+      puts move
+
+      if valid_move?(move)
+        play_move(move, @current_player)
+        switch_players
+      end
+
 
     end while game_state == 'Playing'
 

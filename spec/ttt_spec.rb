@@ -15,6 +15,14 @@ describe TicTacToe do
       expect(subject.valid_move?(1)).to be false
     end
 
+    it "valid_move? return false if paramater is int outside of score" do
+      expect(subject.valid_move?(9)).to be false
+    end
+
+    it "valid_move? return false if parameter for space is invalid" do
+      expect(subject.valid_move?(false)).to be false
+    end
+
     it "play_move sets space to player" do
       subject.play_move(1, 'X')
       expect(subject.get_space(1)).to eq('X')
