@@ -114,6 +114,17 @@ class TicTacToe
      'Tied'    
   end
 
+  def print_end_game_results
+    temp = game_state
+    if temp == 'Tied'
+      puts "Tied Game"
+    else
+      puts "The winner is #{temp}!"
+    end
+      
+
+  end
+
   def game_loop 
     puts "game loop"
     begin
@@ -121,7 +132,7 @@ class TicTacToe
       puts "It is #{@current_player} turn. "
       
       move =  get_human_move
-      puts move
+     
 
       if valid_move?(move)
         play_move(move, @current_player)
@@ -130,7 +141,8 @@ class TicTacToe
 
 
     end while game_state == 'Playing'
-
+      print_board
+      print_end_game_results
   end
 
 end
@@ -139,6 +151,5 @@ end
 
 
 myTTT = TicTacToe.new
-
 
 # myTTT.game_loop
