@@ -2,7 +2,7 @@
 require 'stringio'
 require 'ttt'
 
-describe TicTacToe do
+describe GameBoard do
   
   describe "playing moves" do
     
@@ -39,55 +39,6 @@ describe TicTacToe do
       subject.play_move(2, 'O')
       subject.clear_board
       expect(subject.valid_move?(2)).to be true
-    end
-
-
-# attempt at testing STDOUT and passing STDIN
-# Right now it still makes me press the return key, even though there is a \n in my STDIN string. 
-# todo:: look this issue up online and figure out how to fix it
-
-    it "Asks the player to enter a move" do
-      expect(STDOUT).to receive(:puts).with("Please enter a space to play (0-8) : ")
-      allow(STDIN).to receive(:gets) { '0\n' }
-      expect(subject.get_human_move).to eq(0)			 
-
-    end
-
-    it "Returns false if move use picks is not valid" do
-      subject.play_move(0, 'X')
-      allow(STDIN).to receive(:gets) { '0\n' }
-      expect(subject.get_human_move).to be false
-    end
-
-
-    it "get_current_player returns 'O' after swtich turns" do
-      subject.switch_players
-      expect(subject.get_current_player).to eq('O')
-    end
-
-    it "get_current_player returns 'X' after swtich turns" do
-      subject.switch_players
-      subject.switch_players
-      expect(subject.get_current_player).to eq('X')
-    end
-
-  end
-
-  describe "Displaying the game board" do
-    
-    it "outputs a blank board when no moves have been played" do
-      expect(STDOUT).to receive(:puts).with( "   |   |   \n---+---+---\n   |   |   \n---+---+---\n   |   |   \n")
-      expect(subject.print_board).to eq(nil)
-                                              
-    end
-  
-    it "correctly outputs a board with moves played" do
-      for i in 0..8
-        subject.play_move(i, i)
-      end
-      
-      expect(STDOUT).to receive(:puts).with( " 0 | 1 | 2 \n---+---+---\n 3 | 4 | 5 \n---+---+---\n 6 | 7 | 8 \n")
-      expect(subject.print_board).to eq(nil)
     end
 
 
@@ -161,7 +112,30 @@ describe TicTacToe do
       end
       expect(subject.game_state).to eq('Tied')
     end
+
+
+
  
+  end
+
+  describe "Displaying the game board" do
+    
+    it "outputs a blank board when no moves have been played" do
+      expect(STDOUT).to receive(:puts).with( "   |   |   \n---+---+---\n   |   |   \n---+---+---\n   |   |   \n")
+      expect(subject.print_board).to eq(nil)
+                                              
+    end
+  
+    it "correctly outputs a board with moves played" do
+      for i in 0..8
+        subject.play_move(i, i)
+      end
+      
+      expect(STDOUT).to receive(:puts).with( " 0 | 1 | 2 \n---+---+---\n 3 | 4 | 5 \n---+---+---\n 6 | 7 | 8 \n")
+      expect(subject.print_board).to eq(nil)
+    end
+
+
   end
 
 
