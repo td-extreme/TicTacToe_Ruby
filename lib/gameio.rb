@@ -3,7 +3,13 @@ require 'gameboard'
 
 class GameIo 
 
-  # todo :: move this to an IO Class
+  def get_human_move
+    puts "Please enter a move to play"
+    gets.chomp.to_i    
+  end
+
+
+
   def print_board (gameboard)
     rtn_string = ""
     i = 0
