@@ -8,9 +8,8 @@ class Player
   def initialize (mark, type)
     @mark = mark
     @type = type
-
-    puts "mark = #{mark}"
-    puts "@mark = #{@mark}"    
   end
+
+  
 
 end
