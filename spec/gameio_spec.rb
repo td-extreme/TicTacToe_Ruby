@@ -47,7 +47,7 @@ describe GameIo do
         myBoard.play_move(i, i)
       end
       expect(STDOUT).to receive(:puts).with("Tied Game!")
-      expect(subject.print_game_state(myBoard)).to eq(nil)    
+      expect(subject.print_game_state(myBoard)).to eq('Tied')    
     end
   
     it "prints Player X is the winner when x wins" do
@@ -55,7 +55,7 @@ describe GameIo do
         myBoard.play_move(i, 'X')
       end
       expect(STDOUT).to receive(:puts).with("Player X is the Winner!")
-      expect(subject.print_game_state(myBoard)).to eq(nil)
+      expect(subject.print_game_state(myBoard)).to eq('X')
     end
    
   end

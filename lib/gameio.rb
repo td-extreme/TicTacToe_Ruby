@@ -11,13 +11,13 @@ class GameIo
   def print_game_state (gameboard)
   
     state = gameboard.game_state
-    if state == 'Playing'
-       return state
-    elsif state == 'Tied'
+     
+    if state == 'Tied'
       puts "Tied Game!"
-    else
+    elsif state != 'Playing'
       puts "Player #{state} is the Winner!"
     end
+    state
   end
 
   def print_board (gameboard)
