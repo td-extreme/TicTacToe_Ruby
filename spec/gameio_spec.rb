@@ -5,14 +5,10 @@ require 'gameboard'
 describe GameIo do
   let (:myBoard) { GameBoard.new }
 
-
-##  Problem :: can't get this test to send the number 5 to STDIN
-##  Will have to research this later and figure that part out.
-
   describe "Getting user input" do
     it 'returns 5 when user enters 5' do
       expect(STDOUT).to receive(:puts).with("Please enter a move to play")
-      allow(STDIN).to receive(:gets) { '5\n' }
+      $stdin = StringIO.new("5")
       expect(subject.get_human_move).to eq(5)
     end
   end
