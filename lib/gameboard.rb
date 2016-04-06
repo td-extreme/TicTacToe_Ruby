@@ -1,7 +1,4 @@
 # lib/ttt.rb
-
-
-
 class GameBoard 
 
   def initialize
@@ -30,7 +27,6 @@ class GameBoard
   def get_space(space)
     @board[space]
   end
-
   def game_state
 
     # rows
@@ -74,8 +70,7 @@ class GameBoard
      'Tied'    
   end
 
-
-
+  # todo :: move this to an IO Class
   def print_board
     rtn_string = ""
     i = 0
@@ -89,10 +84,4 @@ class GameBoard
     puts rtn_string
 
   end
-
-
-
 end
-
-
-
