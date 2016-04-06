@@ -70,18 +70,5 @@ class GameBoard
      'Tied'    
   end
 
-  # todo :: move this to an IO Class
-  def print_board
-    rtn_string = ""
-    i = 0
-    begin
 
-       rtn_string << " #{@board[i]} | #{@board[i+1]} | #{@board[i+2]} \n"
-       rtn_string << "---+---+---\n" if i < 6
-       i = i + 3
-    end while i <=6
-    
-    puts rtn_string
-
-  end
 end
