@@ -4,6 +4,14 @@ require 'gameboard'
 
 describe GameIo do
   
+
+  describe "Getting user input" do
+    it 'returns 5 when user enters 5' do
+      allow(STDIN).to receive(:gets) { '5' }
+      expect(subject.get_human_move).to eq('5')
+    end
+  end
+
   describe "Displaying the game board" do
     let (:myBoard) { GameBoard.new }
     
