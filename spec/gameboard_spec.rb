@@ -1,6 +1,6 @@
 #spec/ttt_spec.rb
 require 'stringio'
-require 'ttt'
+require 'gameboard'
 
 describe GameBoard do
   
