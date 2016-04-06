@@ -8,7 +8,17 @@ class GameIo
     gets.chomp.to_i    
   end
 
-
+  def print_game_state (gameboard)
+  
+    state = gameboard.game_state
+    if state == 'Playing'
+       return state
+    elsif state == 'Tied'
+      puts "Tied Game!"
+    else
+      puts "Player #{state} is the Winner!"
+    end
+  end
 
   def print_board (gameboard)
     rtn_string = ""

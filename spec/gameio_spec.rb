@@ -3,7 +3,7 @@ require 'gameio'
 require 'gameboard'
 
 describe GameIo do
-  
+  let (:myBoard) { GameBoard.new }
 
 
 ##  Problem :: can't get this test to send the number 5 to STDIN
@@ -18,7 +18,7 @@ describe GameIo do
   end
 
   describe "Displaying the game board" do
-    let (:myBoard) { GameBoard.new }
+     
     
     it "outputs a blank board when no moves have been played" do
       expect(STDOUT).to receive(:puts).with( "   |   |   \n---+---+---\n   |   |   \n---+---+---\n   |   |   \n")
@@ -35,5 +35,30 @@ describe GameIo do
       expect(subject.print_board myBoard).to eq(nil)
     end
  
+  describe "displaying the results of a game" do
+  
+   it "doesn't print anything if the game is still being played" do
+     expect(subject.print_game_state(myBoard)).to eq('Playing')
+   end  
+ 
+  
+    it "prints to terminal tied when the game is tied" do
+      for i in 0..8
+        myBoard.play_move(i, i)
+      end
+      expect(STDOUT).to receive(:puts).with("Tied Game!")
+      expect(subject.print_game_state(myBoard)).to eq(nil)    
+    end
+  
+    it "prints Player X is the winner when x wins" do
+      for i in 0..2
+        myBoard.play_move(i, 'X')
+      end
+      expect(STDOUT).to receive(:puts).with("Player X is the Winner!")
+      expect(subject.print_game_state(myBoard)).to eq(nil)
+    end
+   
+  end
+
   end
 end
