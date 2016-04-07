@@ -19,7 +19,12 @@ describe PlayerManager do
       myManager.switch_turns
       expect(myManager.current_player).to eq(player2)
     end  
-  
-  end
+ 
+    it "non_current_player returns 'O' when current_player is 'X' " do
+      expect(myManager.non_current_player).to eq(player2)
+    end  
 
+  end
+  
+ 
 end

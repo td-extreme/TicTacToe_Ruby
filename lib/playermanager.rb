@@ -23,6 +23,17 @@ class PlayerManager
     end
   end
 
+  def non_current_player
+    if @current_player == @player1
+      @player2
+    else
+      @player1
+    end
+  end
+ 
+  def play_turn
+    @current_player.play_move 
+  end
 
 
 end
