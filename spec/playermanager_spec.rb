@@ -2,14 +2,16 @@
 
 require 'playermanager'
 require 'gameboard'
+require 'gameio'
 require 'player'
 
 describe PlayerManager do
+  let(:myIo) { GameIo.new }
   let(:myBoard) { GameBoard.new }
   let(:player1) { Player.new('X', 'Human') }
   let(:player2) { Player.new('O', 'Human') }
 
-  let(:myManager) { PlayerManager.new(myBoard, player1, player2) }
+  let(:myManager) { PlayerManager.new(myIo, myBoard, player1, player2) }
 
   describe "current player and changing players" do
     it "current player should start as player 1" do

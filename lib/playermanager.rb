@@ -1,14 +1,15 @@
 # ./lib/playermanager.rb
 
-require 'gameboard'
-require 'player'
+require_relative 'gameboard'
+require_relative 'player'
 
 
 class PlayerManager
 
   attr_reader :current_player
 
-  def initialize (gameboard, player1, player2)
+  def initialize (game_io, gameboard, player1, player2)
+    @io = game_io
     @myBoard = gameboard
     @player1 = player1
     @player2 = player2
@@ -32,7 +33,7 @@ class PlayerManager
   end
  
   def play_turn
-    @current_player.play_move 
+    @current_player.play_move(@io, @myBoard, @player2)
   end
 
 

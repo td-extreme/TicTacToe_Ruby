@@ -7,7 +7,7 @@ describe GameIo do
 
   describe "Getting user input" do
     it 'returns 5 when user enters 5' do
-      expect(STDOUT).to receive(:puts).with("Please enter a move to play")
+      expect(STDOUT).to receive(:puts).with("Please enter a move to play ")
       $stdin = StringIO.new("5")
       expect(subject.get_human_move).to eq(5)
     end
@@ -17,7 +17,7 @@ describe GameIo do
      
     
     it "outputs a blank board when no moves have been played" do
-      expect(STDOUT).to receive(:puts).with( "   |   |   \n---+---+---\n   |   |   \n---+---+---\n   |   |   \n")
+      expect(STDOUT).to receive(:puts).with( "\n   |   |   \n---+---+---\n   |   |   \n---+---+---\n   |   |   \n")
       expect(subject.print_board myBoard).to eq(nil)
                                               
     end
@@ -27,7 +27,7 @@ describe GameIo do
         myBoard.play_move(i, i)
       end
       
-      expect(STDOUT).to receive(:puts).with( " 0 | 1 | 2 \n---+---+---\n 3 | 4 | 5 \n---+---+---\n 6 | 7 | 8 \n")
+      expect(STDOUT).to receive(:puts).with( "\n 0 | 1 | 2 \n---+---+---\n 3 | 4 | 5 \n---+---+---\n 6 | 7 | 8 \n")
       expect(subject.print_board myBoard).to eq(nil)
     end
  

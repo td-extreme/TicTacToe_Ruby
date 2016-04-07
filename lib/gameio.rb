@@ -1,11 +1,11 @@
 # ./lib/io.rb
-require 'gameboard'
+require_relative 'gameboard'
 
 class GameIo 
 
   def get_human_move
-    puts "Please enter a move to play"
-    gets.chomp.to_i    
+    puts "Please enter a move to play "
+    gets.to_i    
   end
 
   def print_game_state (gameboard)
@@ -20,8 +20,13 @@ class GameIo
     state
   end
 
+  def clear_screen 
+      print "\e[2J"
+      print "\e[H"
+  end
+
   def print_board (gameboard)
-    rtn_string = ""
+    rtn_string = "\n"
     i = 0
     begin
 
