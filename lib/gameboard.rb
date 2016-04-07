@@ -1,6 +1,7 @@
 # lib/ttt.rb
 class GameBoard 
 
+
   def initialize
     @board = Array.new(9, ' ')
     @current_player = @player1
