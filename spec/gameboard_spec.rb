@@ -5,9 +5,10 @@ require 'gameboard'
 describe GameBoard do
   
   describe "playing moves" do
-    
+
+   
     it "valid_move? return true if space is free" do
-      expect(subject.valid_move?(1)).to be true
+      expect(subject.valid_move?(1)).to be false
     end
    
     it "valid_move? returns false if space is > 8" do

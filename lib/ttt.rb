@@ -34,4 +34,4 @@ class TicTacToe
 end
 
 myGame = TicTacToe.new
-myGame.game_loop
+#myGame.game_loop
