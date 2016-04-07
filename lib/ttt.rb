@@ -17,8 +17,12 @@ class TicTacToe
     for i in 0..8 
       @key.play_move(i, i + 1)
     end
+  
+
   end
 
+
+### todo:: clean up this loop
   def game_loop 
     begin
       @myIo.clear_screen
