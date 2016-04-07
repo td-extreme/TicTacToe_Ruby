@@ -11,7 +11,7 @@ describe GameIo do
 #      expect(STDOUT).to receive(:puts).with("Please enter a move to play ")
 #      $stdin = StringIO.new("5")
 #      expect(subject.get_human_move).to eq(5)
-    end
+#    end
 
   end
 
