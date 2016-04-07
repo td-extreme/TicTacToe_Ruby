@@ -24,14 +24,21 @@ class Player
 
   def get_pc_move(game_io, gameboard, opponent)
     rtn_move = -1
-    rtn_move =  play_to_win(game_io, gameboard, opponent)
+    rtn_move =  play_to_win(game_io, gameboard)
     return rtn_move if rtn_move != -1
-    rtn_move = opponent.play_to_win(game_io, gameboard, self)
+    rtn_move = opponent.play_to_win(game_io, gameboard)
     return rtn_move if rtn_move != -1
     return 4 if gameboard.get_space(4) == ' '
     rtn_move = get_corner(gameboard)
     return rtn_move if rtn_move != -1
+    return rnd_move
   end
+  
+  def rnd_move(gameboard)
+    gameboard.board.each.with_index do |val, i|
+      return i if val == ' '
+    end
+  end 
 
   def get_corner(gameboard)
     test_spaces = [0,2,6,8]
@@ -40,7 +47,7 @@ class Player
     end
   end
 
-  def play_to_win(game_io, gameboard, opponent)
+  def play_to_win(game_io, gameboard)
     gameboard.board.each.with_index do |val, i| 
       if val == ' '
         gameboard.set_space(i, mark)

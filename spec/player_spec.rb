@@ -28,12 +28,22 @@ describe Player do
       myBoard.play_move(0, 'X')
       myBoard.play_move(4, 'O')
       myBoard.play_move(1, 'X')
-      expect(myPlayer1.play_to_win(myIo, myBoard, myPlayer1)).to eq(2)
+      expect(myPlayer1.play_to_win(myIo, myBoard)).to eq(2)
     end
 
     it "plays corner if it can't win, block, or play center" do
       myBoard.play_move(4, 'X')
       expect(myPlayer2.play_move(myIo, myBoard, myPlayer1)).to eq(0)
+    end
+
+    it "plays first avaliable if can't win, block, play center or corner" do
+      myBoard.play_move(0, 'X')
+      myBoard.play_move(2, 'X')
+      myBoard.play_move(6, 'X')
+      myBoard.play_move(8, 'X')
+      myBoard.play_move(4, 'O')
+      expect(myPlayer2.play_move(myIo, myBoard, myPlayer1)).to eq(1)
+
     end
 
     it "blocks the opponent from winning" do

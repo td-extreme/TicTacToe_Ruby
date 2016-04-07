@@ -10,7 +10,7 @@ class TicTacToe
   def initialize
     @myIo = GameIo.new
     @player1 = Player.new('X', 'Human')
-    @player2 = Player.new('O', 'Human')
+    @player2 = Player.new('O', 'PC')
     @myBoard = GameBoard.new
     @myPlayers = PlayerManager.new(@myIo, @myBoard, @player1, @player2)
     @key = GameBoard.new
