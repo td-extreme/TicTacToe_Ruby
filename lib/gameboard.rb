@@ -1,6 +1,7 @@
 # lib/ttt.rb
 class GameBoard 
 
+  attr_accessor :board
 
   def initialize
     @board = Array.new(9, ' ')
@@ -24,6 +25,10 @@ class GameBoard
       return true
     end
     false
+  end
+
+  def set_space(space, player)
+    @board[space] = player
   end
 
   def get_space(space)
