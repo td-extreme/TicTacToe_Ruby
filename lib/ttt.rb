@@ -14,10 +14,9 @@ class TicTacToe
     @myBoard = GameBoard.new
     @myPlayers = PlayerManager.new(@myIo, @myBoard, @player1, @player2)
     @key = GameBoard.new
-    for i in 0..8 
+    @key.board.each.with_index do |val, i|
       @key.play_move(i, i + 1)
     end
-  
 
   end
 
