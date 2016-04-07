@@ -6,11 +6,13 @@ describe GameIo do
   let (:myBoard) { GameBoard.new }
 
   describe "Getting user input" do
-    it 'returns 5 when user enters 5' do
-      expect(STDOUT).to receive(:puts).with("Please enter a move to play ")
-      $stdin = StringIO.new("5")
-      expect(subject.get_human_move).to eq(5)
+
+#    it 'returns 5 when user enters 5' do
+#      expect(STDOUT).to receive(:puts).with("Please enter a move to play ")
+#      $stdin = StringIO.new("5")
+#      expect(subject.get_human_move).to eq(5)
     end
+
   end
 
   describe "Displaying the game board" do
