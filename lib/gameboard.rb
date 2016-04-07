@@ -12,6 +12,7 @@ class GameBoard
 
   def valid_move?(move)     
     return false if move.class != Fixnum
+    return false if move < 0 
     return true if @board[move] == ' '
     false    
   end

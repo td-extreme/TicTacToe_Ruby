@@ -9,6 +9,14 @@ describe GameBoard do
     it "valid_move? return true if space is free" do
       expect(subject.valid_move?(1)).to be true
     end
+   
+    it "valid_move? returns false if space is > 8" do
+      expect(subject.valid_move?(9)).to be false
+    end
+
+    it "valid_move? returns false if space is < 0" do
+      expect(subject.valid_move?(-1)).to be false
+    end
  
     it "valid_move? return false if space is taken" do
       subject.play_move(1, 'X')

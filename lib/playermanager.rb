@@ -32,8 +32,11 @@ class PlayerManager
     end
   end
  
-  def play_turn
-    @current_player.play_move(@io, @myBoard, @player2)
+  def play_turn (offset = 0)
+    move = @current_player.play_move(@io, @myBoard, @player2) 
+    mark = @current_player.mark
+    switch_turns if @myBoard.play_move(move + offset, mark)
+    move
   end
 
 
