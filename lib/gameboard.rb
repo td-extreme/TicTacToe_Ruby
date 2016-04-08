@@ -12,6 +12,14 @@ class GameBoard
     @board = Array.new(9, mark)
   end
 
+  def available_moves
+    moves = Array.new
+    board.each.with_index do |val, i|
+      moves << i if val == ' '
+    end
+    moves
+  end
+
   def valid_move?(move)     
     return false if move.class != Fixnum
     return false if move < 0 

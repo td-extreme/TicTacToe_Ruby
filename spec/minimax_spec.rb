@@ -28,6 +28,10 @@ let(:myBoard) { GameBoard.new }
 
   end
 
+  describe "getting bet move" do
+
+
+  end
   
 
 

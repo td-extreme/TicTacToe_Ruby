@@ -16,6 +16,16 @@ describe GameBoard do
 
   describe "playing moves" do
 
+    it "returns an array of 9 spaces when available_moves is called on empty board " do
+      expect(subject.available_moves.size).to eq(9)
+    end
+
+    it "returns an array of 0 spaces when available_moves is called on a full board " do
+      subject.clear_board('T')
+      expect(subject.available_moves.size).to eq(0)
+    end
+
+
     it "valid_move? return true if space is free" do
       expect(subject.valid_move?(1)).to be true
     end
