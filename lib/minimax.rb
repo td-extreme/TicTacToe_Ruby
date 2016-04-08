@@ -12,4 +12,16 @@ class Minimax
   end
 
 
+  def minimax(gameboard, player, opponent)
+    scores = []
+    moves = []
+
+    gameboard.available_moves.each do |move|
+      possible_gameboard = gameboard
+      possible_gameboard.play_move(move, player)
+      scores.push minimax(gameboard, opponent, player)					 
+    end
+  end
+
+
 end

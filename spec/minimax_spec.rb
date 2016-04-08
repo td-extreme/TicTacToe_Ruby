@@ -29,6 +29,13 @@ let(:myBoard) { GameBoard.new }
   end
 
   describe "getting bet move" do
+  
+    it "returns 0 when board is blank" do
+      
+    end
+
+    
+
 
 
   end
