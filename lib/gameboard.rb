@@ -8,8 +8,8 @@ class GameBoard
     @current_player = @player1
   end 
 
-  def clear_board
-    @board = Array.new(9, ' ')
+  def clear_board(mark = ' ')
+    @board = Array.new(9, mark)
   end
 
   def valid_move?(move)     

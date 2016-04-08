@@ -4,8 +4,18 @@ require 'gameboard'
 
 describe GameBoard do
   
+  describe "cloning" do
+    it "makes a deep copy when cloning" do
+      subject.clear_board('T')
+      testBoard = subject.clone
+      subject.clear_board
+      expect(testBoard.get_space(0)).to eq('T')
+    end
+  end
+
+
   describe "playing moves" do
-   
+
     it "valid_move? return true if space is free" do
       expect(subject.valid_move?(1)).to be true
     end
