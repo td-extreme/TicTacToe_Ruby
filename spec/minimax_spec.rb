@@ -32,7 +32,6 @@ let(:myMinimax) { Minimax.new(myGame) }
       myGame.myBoard.play_move(0, 'O')
       myGame.myBoard.play_move(4, 'X')
       myGame.myBoard.play_move(1, 'O')
-      myGame.print_board
       expect(myMinimax.play_move(myGame)).to eq(2)
     end
     it "plays the winning move if it can" do
@@ -40,7 +39,6 @@ let(:myMinimax) { Minimax.new(myGame) }
       myGame.myBoard.play_move(3, 'X')
       myGame.myBoard.play_move(5, 'O')
       myGame.myBoard.play_move(8, 'O')
-      myGame.print_board
       expect(myMinimax.play_move(myGame)).to eq(6)
     end
   end
