@@ -3,13 +3,15 @@ require_relative 'player'
 
 class PlayerManager
   attr_reader :current_player
+  attr_reader :player1
+  attr_reader :player2
 
    def initialize (ttt_game)
     @myGame = ttt_game
     @io = ttt_game.myIo
     @myBoard = ttt_game.myBoard
-    @player1 = ttt_game.player1
-    @player2 = ttt_game.player2
+    @player1 = Player.new('X', 'Human')
+    @player2 = Player.new('O', 'PC')
     @current_player = @player1
   end
 

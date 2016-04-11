@@ -1,4 +1,3 @@
-# lib/ttt.rb
 class GameBoard
 
   attr_accessor :board
@@ -43,7 +42,6 @@ class GameBoard
     @board[space]
   end
   def game_state
-
     # rows
     i = 0
     begin
@@ -54,7 +52,6 @@ class GameBoard
       end
       i = i + 3
     end while i <= 6
-
     #cols
     for i in 0..2
       if get_space(i) == get_space(i + 3) && \
@@ -65,23 +62,19 @@ class GameBoard
     end
 
     #diagnols
-
      if get_space(4) == get_space(0) && \
         get_space(4) == get_space(8) && \
         get_space(4) != ' '
        return @board[4]
      end
-
      if get_space(4) == get_space(2) && \
         get_space(4) == get_space(6) && \
         get_space(4) != ' '
        return @board[4]
      end
-
      @board.each do |space|
        return 'Playing' if space == ' '
      end
-
      'Tied'
   end
 end

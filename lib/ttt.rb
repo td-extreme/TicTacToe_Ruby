@@ -1,20 +1,15 @@
 require_relative 'gameio'
 require_relative 'playermanager'
-require_relative 'player'
 require_relative 'gameboard'
 
 class TicTacToe
 
   attr_reader :myIo
-  attr_reader :player1
-  attr_reader :player2
   attr_reader :myBoard
   attr_reader :myPlayers
 
   def initialize
     @myIo = GameIo.new
-    @player1 = Player.new('X', 'Human')
-    @player2 = Player.new('O', 'PC')
     @myBoard = GameBoard.new
 
     @key = GameBoard.new
