@@ -1,45 +1,47 @@
-# ./spec/minimax_spec.rb
 require 'minimax'
 require 'gameboard'
 
-
 describe Minimax do
 let(:myBoard) { GameBoard.new }
+let(:myGame) { TicTacToe.new }
+let(:myMinimax) { Minimax.new(myGame) }
 
-  
   describe "Calculating score" do
     it "returns 10 if game is won" do
-      myBoard.play_move(0, 'X')
-      myBoard.play_move(1, 'X')
-      myBoard.play_move(2, 'X')
-      expect(subject.score(myBoard, 'X', 'O')).to eq(10)
+      myGame.myBoard.play_move(0, 'X')
+      myGame.myBoard.play_move(1, 'X')
+      myGame.myBoard.play_move(2, 'X')
+      expect(myMinimax.score(myGame)).to eq(10)
     end
-
     it "return -10 if game is lost" do
-      myBoard.play_move(0, 'O')
-      myBoard.play_move(1, 'O')
-      myBoard.play_move(2, 'O')
-      expect(subject.score(myBoard, 'X', 'O')).to eq(-10)
+      myGame.myBoard.play_move(0, 'O')
+      myGame.myBoard.play_move(1, 'O')
+      myGame.myBoard.play_move(2, 'O')
+      expect(myMinimax.score(myGame)).to eq(-10)
     end
-
     it "returns 0 if game is still going" do
-      expect(subject.score(myBoard, 'X', 'O')).to eq(0)
+      expect(myMinimax.score(myGame)).to eq(0)
     end
-
   end
 
-  describe "getting bet move" do
-  
-    it "returns 0 when board is blank" do
-      
+  describe "getting best move" do
+    it "returns 8 when board is blank" do
+      expect(myMinimax.play_move(myGame)).to eq(8)
     end
-
-    
-
-
-
+    it "blocks the opponent from winning" do
+      myGame.myBoard.play_move(0, 'O')
+      myGame.myBoard.play_move(4, 'X')
+      myGame.myBoard.play_move(1, 'O')
+      myGame.print_board
+      expect(myMinimax.play_move(myGame)).to eq(2)
+    end
+    it "plays the winning move if it can" do
+      myGame.myBoard.play_move(0, 'X')
+      myGame.myBoard.play_move(3, 'X')
+      myGame.myBoard.play_move(5, 'O')
+      myGame.myBoard.play_move(8, 'O')
+      myGame.print_board
+      expect(myMinimax.play_move(myGame)).to eq(6)
+    end
   end
-  
-
-
 end

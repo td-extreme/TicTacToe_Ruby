@@ -1,18 +1,15 @@
-# ./lib/playermanager.rb
-
 require_relative 'gameboard'
 require_relative 'player'
 
-
 class PlayerManager
-
   attr_reader :current_player
 
-  def initialize (game_io, gameboard, player1, player2)
-    @io = game_io
-    @myBoard = gameboard
-    @player1 = player1
-    @player2 = player2
+   def initialize (ttt_game)
+    @myGame = ttt_game
+    @io = ttt_game.myIo
+    @myBoard = ttt_game.myBoard
+    @player1 = ttt_game.player1
+    @player2 = ttt_game.player2
     @current_player = @player1
   end
 
@@ -31,15 +28,13 @@ class PlayerManager
       @player1
     end
   end
- 
+
   def play_turn (offset = 0)
-    move = @current_player.play_move(@io, @myBoard, non_current_player) 
+    move = @current_player.play_move(@myGame)
     mark = @current_player.mark
     offset = 0 if @current_player.type == 'PC'
     puts offset
     switch_turns if @myBoard.play_move(move + offset, mark)
     move
   end
-
-
 end

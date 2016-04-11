@@ -1,12 +1,12 @@
 # lib/ttt.rb
-class GameBoard 
+class GameBoard
 
   attr_accessor :board
 
   def initialize
     @board = Array.new(9, ' ')
     @current_player = @player1
-  end 
+  end
 
   def clear_board(mark = ' ')
     @board = Array.new(9, mark)
@@ -20,16 +20,16 @@ class GameBoard
     moves
   end
 
-  def valid_move?(move)     
+  def valid_move?(move)
     return false if move.class != Fixnum
-    return false if move < 0 
+    return false if move < 0
     return true if @board[move] == ' '
-    false    
+    false
   end
 
   def play_move(move, player)
     if valid_move?(move)
-      @board[move] = player 
+      @board[move] = player
       return true
     end
     false
@@ -46,16 +46,16 @@ class GameBoard
 
     # rows
     i = 0
-    begin 
+    begin
       if get_space(i) == get_space(i + 1) && \
          get_space(i) == get_space(i + 2) && \
          get_space(i) != ' '
         return @board[i]
       end
       i = i + 3
-    end while i <= 6     
-    
-    #cols      
+    end while i <= 6
+
+    #cols
     for i in 0..2
       if get_space(i) == get_space(i + 3) && \
          get_space(i) == get_space(i + 6) && \
@@ -81,9 +81,7 @@ class GameBoard
      @board.each do |space|
        return 'Playing' if space == ' '
      end
-	    
-     'Tied'    
+
+     'Tied'
   end
-
-
 end

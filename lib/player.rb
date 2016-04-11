@@ -1,4 +1,4 @@
-# ./lib/player.rb
+require_relative 'minimax'
 
 class Player
 
@@ -11,18 +11,25 @@ class Player
 
   end
 
-  def play_move(game_io, gameboard, opponent) 
-    return get_human_move(game_io, gameboard, opponent) if @type == 'Human'   
-    return get_pc_move(game_io, gameboard, opponent) if @type == 'PC'
-  end  
-
-
-  def get_human_move(game_io, gameboard, opponent)
-    game_io.get_human_move
+  def play_move(ttt_game)
+    return get_human_move(ttt_game) if @type == 'Human'
+    return get_pc_move(ttt_game) if @type == 'PC'
   end
 
 
-  def get_pc_move(game_io, gameboard, opponent)
+  def get_human_move(ttt_game)
+    ttt_game.myIo.get_human_move
+  end
+
+  def get_pc_move(ttt_game)
+    myMinimax = Minimax.new(ttt_game)
+    myMinimax.play_move(ttt_game)
+  end
+end
+
+=begin
+
+  def get_pc_move(ttt_game)
     rtn_move = -1
     rtn_move =  play_to_win(game_io, gameboard)
     return rtn_move if rtn_move != -1
@@ -33,12 +40,12 @@ class Player
     return rtn_move if rtn_move != -1
     return rnd_move
   end
-  
+
   def rnd_move(gameboard)
     gameboard.board.each.with_index do |val, i|
       return i if val == ' '
     end
-  end 
+  end
 
   def get_corner(gameboard)
     test_spaces = [0,2,6,8]
@@ -48,7 +55,7 @@ class Player
   end
 
   def play_to_win(game_io, gameboard)
-    gameboard.board.each.with_index do |val, i| 
+    gameboard.board.each.with_index do |val, i|
       if val == ' '
         gameboard.set_space(i, mark)
         if gameboard.game_state == mark
@@ -57,8 +64,8 @@ class Player
         end
         gameboard.set_space(i, ' ')
       end
-    end 
+    end
     return -1
   end
-
 end
+=end

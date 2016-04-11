@@ -3,12 +3,12 @@ require 'stringio'
 require 'gameboard'
 
 describe GameBoard do
-  
+
   describe "cloning" do
     it "makes a deep copy when cloning" do
       subject.clear_board('T')
       testBoard = subject.clone
-      subject.clear_board
+      subject.clear_board(' ')
       expect(testBoard.get_space(0)).to eq('T')
     end
   end
@@ -29,7 +29,7 @@ describe GameBoard do
     it "valid_move? return true if space is free" do
       expect(subject.valid_move?(1)).to be true
     end
-   
+
     it "valid_move? returns false if space is > 8" do
       expect(subject.valid_move?(9)).to be false
     end
@@ -37,7 +37,7 @@ describe GameBoard do
     it "valid_move? returns false if space is < 0" do
       expect(subject.valid_move?(-1)).to be false
     end
- 
+
     it "valid_move? return false if space is taken" do
       subject.play_move(1, 'X')
       expect(subject.valid_move?(1)).to be false
@@ -55,7 +55,7 @@ describe GameBoard do
       subject.play_move(1, 'X')
       expect(subject.get_space(1)).to eq('X')
     end
-  
+
     it "play_move doesn't change player if spot is taken" do
       subject.play_move(1, 'X')
       subject.play_move(1, 'O')
@@ -73,7 +73,7 @@ describe GameBoard do
   end
 
   describe "Checking Game Status ie Playing, Winner, Tied" do
- 
+
     it  "Reutnrs 'Playing' when game is still going on" do
       expect(subject.game_state).to eq('Playing')
     end
@@ -84,21 +84,21 @@ describe GameBoard do
       subject.play_move(2, 'X')
       expect(subject.game_state).to eq('X')
     end
-   
+
     it "Returns 'X' as winner when 'X' has 3 in a row second row" do
       subject.play_move(3, 'X')
       subject.play_move(4, 'X')
       subject.play_move(5, 'X')
       expect(subject.game_state).to eq('X')
     end
- 
+
     it "Returns 'X' as winner when 'X' has 3 in a row third row" do
       subject.play_move(6, 'X')
       subject.play_move(7, 'X')
       subject.play_move(8, 'X')
       expect(subject.game_state).to eq('X')
     end
- 
+
     it "Returns 'X' as winner when 'X' has 3 in a col first col" do
       subject.play_move(0, 'X')
       subject.play_move(3, 'X')
@@ -135,7 +135,7 @@ describe GameBoard do
     end
 
     it "Returns 'Tied' if game no moves left and there is no winner" do
-      for i in 0..8 
+      for i in 0..8
         subject.play_move(i, i)
       end
       expect(subject.game_state).to eq('Tied')
