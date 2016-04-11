@@ -1,6 +1,11 @@
 GEM
   remote: https://rubygems.org/
   specs:
+    activerecord (2.3.18)
+      activesupport (= 2.3.18)
+    activesupport (2.3.18)
+    deep_copy (0.0.3)
+      activerecord (~> 2.3)
     diff-lcs (1.2.5)
     rspec (3.4.0)
       rspec-core (~> 3.4.0)
@@ -20,6 +25,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  deep_copy
   rspec
 
 BUNDLED WITH
