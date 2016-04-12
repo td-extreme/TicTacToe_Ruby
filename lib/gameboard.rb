@@ -4,7 +4,15 @@ class GameBoard
 
   def initialize
     @board = Array.new(9, ' ')
-    @current_player = @player1
+  end
+
+  def deep_copy
+    temp = self.clone
+    temp.board = Array.new(9, ' ')
+    temp.board.each_with_index do |val, i|
+      temp.board[i] = self.board[i]
+    end
+    temp
   end
 
   def clear_board(mark = ' ')

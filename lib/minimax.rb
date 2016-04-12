@@ -1,37 +1,35 @@
-require 'deep_clone'
-require_relative 'ttt'
 
 class Minimax
 
-  def initialize(ttt_game)
-    @myGame = ttt_game
+  def initialize()
   end
 
-  def score(ttt_game)
-    return -10 if ttt_game.game_state == @myGame.myPlayers.non_current_player.mark
-    return 10 if ttt_game.game_state == @myGame.myPlayers.current_player.mark
+  def score(myBoard)
+    return -10 if myBoard.game_state == @current_player.mark
+    return 10 if myBoard.game_state == @non_current_player.mark
     return 0
   end
 
-  def play_move(ttt_game)
-    return 8 if ttt_game.myBoard.available_moves.size == 9
-    minimax(ttt_game)
+  def play_move(myBoard, player, opponent)
+    return 8 if myBoard.available_moves.size == 9
+    @current_player = player
+    @non_current_player = opponent
+    minimax(myBoard, player, opponent)
     @choice
   end
 
-  def minimax(ttt_game)
-    return score(ttt_game) if ttt_game.game_state != 'Playing'
+  def minimax(myBoard, player, opponent)
+    return score(myBoard) if myBoard.game_state != 'Playing'
     scores = []
     moves = []
 
-    ttt_game.myBoard.available_moves.each do |move|
-      possible_game = DeepClone.clone(ttt_game)
-      possible_game.myBoard.play_move(move, possible_game.myPlayers.current_player.mark)
-      possible_game.myPlayers.switch_turns
-      scores.push minimax(possible_game)
+    myBoard.available_moves.each do |move|
+      possible_game_board = myBoard.deep_copy
+      possible_game_board.play_move(move, player.mark)
+      scores.push minimax(possible_game_board, opponent, player)
       moves.push move
     end
-    if ttt_game.myPlayers.current_player.mark == @myGame.myPlayers.current_player.mark
+    if player == @current_player
          max_score_index = scores.each_with_index.max[1]
          @choice = moves[max_score_index]
          return scores[max_score_index]

@@ -16,7 +16,7 @@ class TicTacToe
     @key.board.each.with_index do |val, i|
       @key.play_move(i, i + 1)
     end
-    @myPlayers = PlayerManager.new(self)
+    @myPlayers = PlayerManager.new(@myBoard, @myIo)
   end
 
   def print_board
@@ -36,12 +36,12 @@ class TicTacToe
       @myIo.print_board(@myBoard)
       @myPlayers.play_turn(-1)
     end while @myBoard.game_state == 'Playing'
-      @myIo.clear_screen
-      @myIo.clear_screen
-      @myIo.print_message('    KEY')
-      @myIo.print_board(@key)
-      @myIo.print_message("\n GAME BOARD")
-      @myIo.print_board(@myBoard)
-      @myIo.print_game_state(@myBoard)
+    @myIo.clear_screen
+    @myIo.clear_screen
+    @myIo.print_message('    KEY')
+    @myIo.print_board(@key)
+    @myIo.print_message("\n GAME BOARD")
+    @myIo.print_board(@myBoard)
+    @myIo.print_game_state(@myBoard)
   end
 end
