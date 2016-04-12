@@ -1,14 +1,4 @@
-
 class Minimax
-
-  def initialize()
-  end
-
-  def score(myBoard)
-    return -10 if myBoard.game_state == @current_player.mark
-    return 10 if myBoard.game_state == @non_current_player.mark
-    return 0
-  end
 
   def play_move(myBoard, player, opponent)
     return 8 if myBoard.available_moves.size == 9
@@ -16,6 +6,13 @@ class Minimax
     @non_current_player = opponent
     minimax(myBoard, player, opponent)
     @choice
+  end
+
+private
+  def score(myBoard)
+    return 10 if myBoard.game_state == @current_player.mark
+    return -10 if myBoard.game_state == @non_current_player.mark
+    return 0
   end
 
   def minimax(myBoard, player, opponent)
