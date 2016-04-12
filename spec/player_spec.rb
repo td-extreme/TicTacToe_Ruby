@@ -7,8 +7,8 @@ describe Player do
 
   describe "mark" do
     let(:myIo) { GameIo.new }
-    let(:myPlayer1) { Player.new('X', 'Human') }
-    let(:myPlayer2) { Player.new('O', 'PC') }
+    let(:myPlayer1) { Player.new('X') }
+    let(:myPlayer2) { Player_PC.new('O') }
     let(:myBoard) { GameBoard.new }
 
     let(:myGame) { TicTacToe.new }

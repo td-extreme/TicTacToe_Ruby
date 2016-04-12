@@ -8,8 +8,8 @@ class PlayerManager
 
    def initialize (ttt_game)
     @myGame = ttt_game
-    @player1 = Player.new('X', 'Human')
-    @player2 = Player.new('O', 'PC')
+    @player1 = Player.new('X')
+    @player2 = Player_PC.new('O')
     @current_player = @player1
   end
 
@@ -32,8 +32,7 @@ class PlayerManager
   def play_turn (offset = 0)
     move = @current_player.play_move(@myGame)
     mark = @current_player.mark
-    offset = 0 if @current_player.type == 'PC'
-    puts offset
+    offset = 0 if @current_player.class == Player_PC
     switch_turns if @myGame.myBoard.play_move(move + offset, mark)
     move
   end
