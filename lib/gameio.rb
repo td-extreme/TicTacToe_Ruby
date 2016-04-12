@@ -10,6 +10,10 @@ class GameIo
     puts message
   end
 
+  def get_input
+    gets.chomp
+  end
+
   def print_game_state (gameboard)
     state = gameboard.game_state
     if state == 'Tied'

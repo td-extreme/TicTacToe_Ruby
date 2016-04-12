@@ -6,7 +6,7 @@ require 'player'
 
 describe PlayerManager do
   let(:myGame) { TicTacToe.new }
-  let(:myManager) { PlayerManager.new(myGame) }
+  let(:myManager) { PlayerManager.new(myGame.myBoard, myGame.myIo) }
 
   describe "current player and changing players" do
     it "current player should start as player 1" do
@@ -18,6 +18,20 @@ describe PlayerManager do
     end
     it "non_current_player returns 'O' when current_player is 'X' " do
       expect(myGame.myPlayers.non_current_player).to eq(myGame.myPlayers.player2)
+    end
+  end
+
+  describe "setting up players" do
+      #specify {myManager.get_user_players_choice = 2}
+      #choice = int
+
+    it "User chooses option 2" do
+      myManager.set_players(2)
+      expect(myManager.player1.class).to eq(Player_PC)
+    end
+    it "User chooses option 3" do
+      myManager.set_players(3)
+      expect(myManager.player2.class).to eq(Player)
     end
   end
 end

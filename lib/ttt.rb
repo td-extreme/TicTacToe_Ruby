@@ -28,6 +28,7 @@ class TicTacToe
   end
 
   def game_loop
+    @myPlayers.set_players
     begin
       @myIo.clear_screen
       @myIo.print_message('    KEY')
