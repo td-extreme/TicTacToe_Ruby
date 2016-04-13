@@ -29,6 +29,7 @@ class GameIo
       print "\e[H"
   end
 
+# todo:: clean this code up. It is pretty sloppy
   def print_board (gameboard)
     rtn_string = "\n"
     for i in 0...gameboard.row_size
