@@ -46,16 +46,6 @@ class GameIo
           rtn_string << "\n"
         end
       end
-    #rtn_string << "\n"
-    puts rtn_string
-    return
-
-    i = 0
-    begin
-       rtn_string << " #{gameboard.get_space(i)} | #{gameboard.get_space(i+1)} | #{gameboard.get_space(i+2)} \n"
-       rtn_string << "---+---+---\n" if i < 6
-       i = i + 3
-    end while i <=6
     puts rtn_string
   end
 end
