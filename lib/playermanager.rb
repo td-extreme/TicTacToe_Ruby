@@ -29,11 +29,10 @@ class PlayerManager
     end
   end
 
-  def play_turn (offset = 0)
+  def play_turn ()
     move = @current_player.play_move(@myIo, @myBoard, @current_player, @non_current_player)
     mark = @current_player.mark
-    offset = 0 if @current_player.class == Player_PC
-    switch_turns if @myBoard.play_move(move + offset, mark)
+    switch_turns if @myBoard.play_move(move, mark)
     move
   end
 

@@ -6,7 +6,7 @@ class Player
     @mark = mark
   end
   def play_move(myIo, myBoard, player, opponent)
-    myIo.get_human_move
+    myIo.get_human_move - 1
   end
 end
 

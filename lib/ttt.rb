@@ -8,9 +8,9 @@ class TicTacToe
   attr_reader :myBoard
   attr_reader :myPlayers
 
-  def initialize
+  def initialize(board_size = 3)
     @myIo = GameIo.new
-    @myBoard = GameBoard.new(4)
+    @myBoard = GameBoard.new(board_size)
 
     @key = GameBoard.new
     for i in 0..@key.board_size
@@ -35,7 +35,7 @@ class TicTacToe
       @myIo.print_board(@key)
       @myIo.print_message("\n GAME BOARD")
       @myIo.print_board(@myBoard)
-      @myPlayers.play_turn(-1)
+      @myPlayers.play_turn()
     end while @myBoard.game_state == 'Playing'
     @myIo.clear_screen
     @myIo.clear_screen
