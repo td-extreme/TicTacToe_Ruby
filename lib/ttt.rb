@@ -10,10 +10,10 @@ class TicTacToe
 
   def initialize
     @myIo = GameIo.new
-    @myBoard = GameBoard.new
+    @myBoard = GameBoard.new(4)
 
     @key = GameBoard.new
-    @key.board.each.with_index do |val, i|
+    for i in 0..@key.board_size
       @key.play_move(i, i + 1)
     end
     @myPlayers = PlayerManager.new(@myBoard, @myIo)

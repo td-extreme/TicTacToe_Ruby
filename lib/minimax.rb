@@ -1,7 +1,7 @@
 class Minimax
 
   def play_move(myBoard, player, opponent)
-    return 8 if myBoard.available_moves.size == 9
+    return 0 if myBoard.is_empty?
     @current_player = player
     @non_current_player = opponent
     minimax(myBoard, player, opponent)

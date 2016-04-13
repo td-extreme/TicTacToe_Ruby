@@ -35,14 +35,18 @@ class GameBoard
 
   def valid_move?(move)
     return false if move.class != Fixnum
-    return false if move > board_size
+    return false if move > board_size - 1
     return false if move < 0
     return true if get_space(move) == ' '
     false
   end
 
   def board_size
-    (@row_size * @row_size) - 1
+    (@row_size * @row_size)
+  end
+
+  def is_empty?
+    available_moves.size == board_size
   end
 
   def play_move(move, player)

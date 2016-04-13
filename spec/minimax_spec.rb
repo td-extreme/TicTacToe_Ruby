@@ -13,8 +13,8 @@ describe Minimax do
   end
 
   describe "getting best move" do
-    it "returns 8 when board is blank" do
-      expect(myMinimax.play_move(@myBoard, @player1, @player2)).to eq(8)
+    it "returns 0 when board is blank" do
+      expect(myMinimax.play_move(@myBoard, @player1, @player2)).to eq(0)
     end
     it "blocks the opponent from winning" do
       myGame.myBoard.play_move(0, 'O')
