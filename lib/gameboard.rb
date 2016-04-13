@@ -1,9 +1,10 @@
 class GameBoard
 
-  attr_accessor :board
+  attr_accessor :board, :row_size
 
-  def initialize
-    @board = Array.new(9, ' ')
+  def initialize (row_size = 3)
+    @row_size = row_size
+    @board = Array.new(@row_size * @row_size, ' ')
   end
 
   def deep_copy
