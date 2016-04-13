@@ -75,35 +75,49 @@ class GameBoard
 
   def game_state
     # rows
-    i = 0
-    begin
-      if get_space(i) == get_space(i + 1) && \
-         get_space(i) == get_space(i + 2) && \
-         get_space(i) != ' '
-        return get_space(i)
+    for i in 0...(row_size)
+      for j in 0..(row_size - 3)
+        if @board[i][j] == @board[i][j+1] && \
+           @board[i][j] == @board[i][j+2] && \
+           @board[i][j] != ' '
+          return @board[i][j]
+        end
       end
-      i = i + 3
-    end while i <= 6
+    end
+
     #cols
-    for i in 0..2
-      if get_space(i) == get_space(i + 3) && \
-         get_space(i) == get_space(i + 6) && \
-         get_space(i) != ' '
-        return get_space(i)
+    for i in 0..(row_size - 3)
+      for j in 0...(row_size)
+        if @board[i][j] == @board[i + 1 ][j] && \
+           @board[i][j] == @board[i + 2 ][j] && \
+           @board[i][j] != ' '
+          return @board[i][j]
+        end
       end
     end
 
     #diagnols
-     if get_space(4) == get_space(0) && \
-        get_space(4) == get_space(8) && \
-        get_space(4) != ' '
-       return get_space(4)
-     end
-     if get_space(4) == get_space(2) && \
-        get_space(4) == get_space(6) && \
-        get_space(4) != ' '
-       return get_space(4)
-     end
+      for i in 0..(row_size - 3)
+        for j in 0...(row_size)
+          if (j - 2 >= 0)
+            if @board[i][j] == @board[i+1][j-1] && \
+               @board[i][j] == @board[i+2][j-2] && \
+               @board[i][j] != ' '
+              return @board[i][j]
+            end
+          end
+          if (j + 2 < @row_size)
+            if @board[i][j] == @board[i+1][j+1] && \
+               @board[i][j] == @board[i+2][j+2] && \
+               @board[i][j] != ' '
+              return @board[i][j]
+            end
+          end
+        end
+      end
+
+
+     #tied
      @board.each do |rows|
        rows.each do |space|
          return 'Playing' if space == ' '

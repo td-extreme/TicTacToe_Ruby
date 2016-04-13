@@ -72,7 +72,7 @@ describe GameBoard do
 
   end
 
-  describe "Checking Game Status ie Playing, Winner, Tied" do
+  describe "Checking Game Status ie Playing, Winner, Tied on a 3x3 board" do
 
     it  "Reutnrs 'Playing' when game is still going on" do
       expect(subject.game_state).to eq('Playing')
@@ -120,14 +120,14 @@ describe GameBoard do
       expect(subject.game_state).to eq('X')
     end
 
-    it "Returns 'X' as winner when 'X' has 3 in a diagnal descending" do
+    it "Returns 'X' as winner when 'X' has 3 in a diagonal descending" do
       subject.play_move(0, 'X')
       subject.play_move(4, 'X')
       subject.play_move(8, 'X')
       expect(subject.game_state).to eq('X')
     end
 
-    it "Returns 'X' as winner when 'X' has 3 in a diagnal ascending" do
+    it "Returns 'X' as winner when 'X' has 3 in a diagonal ascending" do
       subject.play_move(6, 'X')
       subject.play_move(4, 'X')
       subject.play_move(2, 'X')
@@ -140,5 +140,52 @@ describe GameBoard do
       end
       expect(subject.game_state).to eq('Tied')
     end
+  end
+
+  describe "Testing a 4x4 board" do
+    let(:board4x4) {GameBoard.new(4)}
+    it "valid_move(15) should return true on a 4x4 board" do
+      expect(board4x4.valid_move?(15)).to eq(true)
+    end
+    it "valid_move(16) should return false on a 4x4 board" do
+      expect(board4x4.valid_move?(16)).to eq(false)
+    end
+
+    it "Returns 'X' as winner when 'X' has 3 in a row" do
+      board4x4.play_move(3, 'X')
+      board4x4.play_move(1, 'X')
+      board4x4.play_move(2, 'X')
+      expect(board4x4.game_state).to eq('X')
+    end
+
+    it "Returns 'X' as winner when 'X' has 3 in a col" do
+      board4x4.play_move(7, 'X')
+      board4x4.play_move(11, 'X')
+      board4x4.play_move(15, 'X')
+      expect(board4x4.game_state).to eq('X')
+    end
+
+    it "Retuns 'X' as winner when 'X' has 3 in a row diagonal right" do
+      board4x4.play_move(1, 'X')
+      board4x4.play_move(6, 'X')
+      board4x4.play_move(11, 'X')
+      expect(board4x4.game_state).to eq('X')
+    end
+    it "Returns 'X' as winner when 'X' has 3 in a row diagonal left" do
+      board4x4.play_move(7, 'X')
+      board4x4.play_move(10, 'X')
+      board4x4.play_move(13, 'X')
+      expect(board4x4.game_state).to eq('X')
+    end
+  end
+  describe "Testing a 10x10 board" do
+    let(:board10x10) {GameBoard.new(10)}
+    it "Returns 'X' as the winner when 'X' has 3 in a rwo diagonal left" do
+        board10x10.play_move(99, 'X')
+        board10x10.play_move(88, 'X')
+        board10x10.play_move(77, 'X')
+        expect(board10x10.game_state).to eq('X')
+    end
+
   end
 end
