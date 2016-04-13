@@ -31,6 +31,25 @@ class GameIo
 
   def print_board (gameboard)
     rtn_string = "\n"
+    for i in 0...gameboard.row_size
+      for j in 0...gameboard.row_size
+        space = i * gameboard.row_size + j
+        rtn_string << " #{gameboard.get_space(space)} "
+        rtn_string << "|" if (j < gameboard.row_size - 1)
+      end
+      rtn_string << "\n"
+      if (i < gameboard.row_size - 1)
+        for j in 0...gameboard.row_size
+          rtn_string << "---"
+          rtn_string << "+" if (j < gameboard.row_size - 1)
+          end
+          rtn_string << "\n"
+        end
+      end
+    #rtn_string << "\n"
+    puts rtn_string
+    return
+
     i = 0
     begin
        rtn_string << " #{gameboard.get_space(i)} | #{gameboard.get_space(i+1)} | #{gameboard.get_space(i+2)} \n"
