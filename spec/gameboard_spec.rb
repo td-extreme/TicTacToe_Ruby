@@ -7,7 +7,7 @@ describe GameBoard do
   describe "cloning" do
     it "makes a deep copy when cloning" do
       subject.clear_board('T')
-      testBoard = subject.clone
+      testBoard = subject.deep_copy
       subject.clear_board(' ')
       expect(testBoard.get_space(0)).to eq('T')
     end
